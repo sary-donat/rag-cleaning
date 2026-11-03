@@ -53,7 +53,7 @@ QA_PROMPT = PromptTemplate(
 def build_index():
     """טעינת המסמכים, חלוקה ל-Chunks, יצירת Embeddings ושמירה ב-Vector Store."""
     documents = SimpleDirectoryReader(DATA_DIR).load_data()
-    splitter = SentenceSplitter(chunk_size=800, chunk_overlap=100)
+    splitter = SentenceSplitter(chunk_size=300, chunk_overlap=100)
     index = VectorStoreIndex.from_documents(documents, transformations=[splitter])
     index.storage_context.persist(persist_dir=STORAGE_DIR)
     print(f"נוצר אינדקס מ-{len(documents)} מסמכים")
